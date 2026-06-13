@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joel Nicollas · IA · Cloud · Cibersegurança</title>
+  <meta name="description" content="Portfólio pessoal de Joel Nicollas — Estudante de Sistemas de Informação com foco em IA, Cloud e Cibersegurança." />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0f14;
+      --bg2:      #13161d;
+      --bg3:      #1a1e28;
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.13);
+      --text:     #e8eaf0;
+      --muted:    #7a8099;
+      --accent:   #4f8ef7;
+      --accent2:  #2dd4bf;
+      --accent3:  #a78bfa;
+      --radius:   10px;
+      --radius-sm: 6px;
+
+      --tag-ai-bg:    #1a2a3a;
+      --tag-ai-t:     #4f8ef7;
+      --tag-cloud-bg: #0d2a23;
+      --tag-cloud-t:  #2dd4bf;
+      --tag-sec-bg:   #1e1530;
+      --tag-sec-t:    #a78bfa;
+    }
+
+    [data-theme="light"] {
+      --bg:      #f4f6fa;
+      --bg2:     #ffffff;
+      --bg3:     #eaecf2;
+      --border:  rgba(0,0,0,0.07);
+      --border2: rgba(0,0,0,0.13);
+      --text:    #0d0f14;
+      --muted:   #6b7280;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+      background: var(--bg2);
+      border-bottom: 0.5px solid var(--border2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 0;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .nav-cta {
+      font-size: 12px;
+      padding: 6px 14px;
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      cursor: pointer;
+      background: transparent;
+      transition: border-color 0.15s, color 0.15s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 3.5rem 2rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      background: linear-gradient(180deg, #0d1520 0%, var(--bg) 100%);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--accent2);
+      background: #0d2a23;
+      border: 0.5px solid rgba(45,212,191,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tag .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 0.5px solid;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .badge-ai    { background: var(--tag-ai-bg);    color: var(--tag-ai-t);    border-color: rgba(79,142,247,0.25); }
+    .badge-cloud { background: var(--tag-cloud-bg); color: var(--tag-cloud-t); border-color: rgba(45,212,191,0.25); }
+    .badge-sec   { background: var(--tag-sec-bg);   color: var(--tag-sec-t);   border-color: rgba(167,139,250,0.25); }
+    .badge-gray  { background: #1a1e28; color: var(--muted); border-color: var(--border2); }
+
+    .stats-bar {
+      display: flex;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .stat {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border-right: 0.5px solid var(--border);
+      text-align: center;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-n {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .stat-l {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: 600px;
+    }
+
+    .sidebar {
+      border-right: 0.5px solid var(--border);
+      padding: 1.25rem 0;
+      background: var(--bg2);
+    }
+
+    .sidebar-section {
+      padding: 0 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      padding: 0 0.25rem;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      margin-bottom: 2px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sidebar-item:hover { background: var(--bg3); color: var(--text); }
+    .sidebar-item.active { background: #162035; color: var(--accent); }
+    .sidebar-item i { font-size: 15px; }
+
+    .sidebar-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-left: auto;
+    }
+
+    .content { padding: 1.5rem; overflow: hidden; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .view-all { font-size: 12px; color: var(--accent); cursor: pointer; text-decoration: none; }
+    .view-all:hover { text-decoration: underline; }
+
+    .cert-filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.filter-active {
+      background: var(--tag-ai-bg);
+      color: var(--accent);
+      border-color: rgba(79,142,247,0.4);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .cert-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      cursor: pointer;
+      transition: border-color 0.15s, opacity 0.2s ease;
+    }
+
+    .cert-card:hover { border-color: var(--border2); }
+
+    .cert-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .cert-issuer { display: flex; align-items: center; gap: 7px; }
+
+    .cert-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .ci-google { background: #1a2a3a; color: var(--accent); }
+    .ci-ibm    { background: #1a1a30; color: #819cf7; }
+
+    .cert-name        { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .cert-issuer-name { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .cert-status {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      border: 0.5px solid;
+    }
+
+    .cs-done     { background: #0d2a23; color: var(--accent2); border-color: rgba(45,212,191,0.2); }
+    .cs-progress { background: #1a1a10; color: #f59e0b;        border-color: rgba(245,158,11,0.2); }
+    .cs-planned  { background: #1a1a10; color: #f59e0b;        border-color: rgba(245,158,11,0.2); }
+
+    .cert-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0.5rem;
+    }
+
+    .cert-verify {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+    }
+
+    .cert-verify:hover { color: var(--accent); }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .article-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0.9rem 1rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .article-row:hover { border-color: var(--border2); }
+
+    .article-num  { font-size: 11px; color: var(--muted); min-width: 20px; margin-top: 2px; }
+    .article-info { flex: 1; }
+    .article-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+
+    .article-meta {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .article-arrow { font-size: 15px; color: var(--muted); margin-top: 2px; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .proj-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .proj-card:hover { border-color: var(--border2); }
+
+    .proj-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-name { font-size: 13px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 5px; }
+    .proj-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+    .proj-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proj-tag  { font-size: 10px; padding: 2px 8px; border-radius: 20px; }
+
+    .lock-banner {
+      background: #100d1a;
+      border: 0.5px solid rgba(167,139,250,0.2);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1.25rem;
+    }
+
+    .lock-icon { font-size: 20px; color: var(--accent3); }
+
+    .lock-text  { flex: 1; }
+    .lock-title { font-size: 13px; font-weight: 500; color: var(--text); }
+    .lock-desc  { font-size: 12px; color: var(--muted); }
+
+    .lock-btn {
+      font-size: 12px;
+      padding: 6px 14px;
+      background: #1e1530;
+      border: 0.5px solid rgba(167,139,250,0.3);
+      border-radius: var(--radius-sm);
+      color: var(--accent3);
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+
+    .lock-btn:hover { background: #2a1f42; }
+
+    .footer-bar {
+      padding: 0.75rem 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg2);
+    }
+
+    .footer-left { font-size: 11px; color: var(--muted); }
+
+    .footer-links { display: flex; gap: 1rem; }
+
+    .footer-link {
+      font-size: 11px;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-link:hover { color: var(--text); }
+
+    @media (max-width: 680px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .cert-grid, .projects-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { flex: 1 1 50%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="nav-logo">
+      <span class="dot"></span>
+      joel.nicollas
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#certificados" class="nav-link active">Certificados</a></li>
+      <li><a href="#artigos"      class="nav-link">Artigos</a></li>
+      <li><a href="#projetos"     class="nav-link">Projetos</a></li>
+      <li><a href="#sobre"        class="nav-link">Sobre</a></li>
+    </ul>
+
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <button id="theme-toggle" aria-label="Ativar modo claro" style="
+        background: transparent;
+        border: 0.5px solid var(--border2);
+        border-radius: var(--radius-sm);
+        color: var(--muted);
+        padding: 6px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        transition: border-color 0.15s, color 0.15s;
+      ">
+        <i class="ti ti-sun"></i>
+      </button>
+
+      <a href="#privado" class="nav-cta">
+        <i class="ti ti-lock" aria-hidden="true"></i>
+        Área Privada
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-tag">
+      <span class="pulse"></span>
+      Disponível para oportunidades · Campina Grande, PB
+    </div>
+
+    <h1>Joel Nicollas<br><span>IA · Cloud · Cibersegurança</span></h1>
+
+    <p class="hero-sub">
+      Estudante de Sistemas de Informação na Unifacisa. Construindo expertise
+      autodirigida em IA generativa, cloud computing e segurança — desde o 1º período.
+    </p>
+
+    <div class="hero-badges">
+      <span class="badge badge-ai">
+        <i class="ti ti-brain" aria-hidden="true"></i>Generative AI
+      </span>
+      <span class="badge badge-cloud">
+        <i class="ti ti-cloud" aria-hidden="true"></i>Google Cloud
+      </span>
+      <span class="badge badge-sec">
+        <i class="ti ti-shield-lock" aria-hidden="true"></i>Cybersecurity
+      </span>
+      <span class="badge badge-gray">
+        <i class="ti ti-school" aria-hidden="true"></i>Unifacisa · SI · 1º período
+      </span>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-n" id="stat-certs" style="color:var(--accent)">0</div>
+      <div class="stat-l">Certificações na trilha</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:var(--accent2)">3</div>
+      <div class="stat-l">Áreas de foco</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-artigos" style="color:var(--accent3)">0</div>
+      <div class="stat-l">Artigos publicados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-projetos" style="color:#f59e0b">0</div>
+      <div class="stat-l">Projetos no GitHub</div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Certificados</div>
+        <a href="#certificados" class="sidebar-item active" data-section="certificados">
+          <i class="ti ti-brain" aria-hidden="true"></i>
+          IA &amp; ML
+          <span class="sidebar-dot" style="background:var(--accent)"></span>
+        </a>
+        <a href="#cert-cloud" class="sidebar-item" data-section="cert-cloud">
+          <i class="ti ti-cloud" aria-hidden="true"></i>
+          Cloud
+          <span class="sidebar-dot" style="background:var(--accent2)"></span>
+        </a>
+        <a href="#cert-sec" class="sidebar-item" data-section="cert-sec">
+          <i class="ti ti-shield" aria-hidden="true"></i>
+          Segurança
+          <span class="sidebar-dot" style="background:var(--accent3)"></span>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Conteúdo</div>
+        <a href="#artigos"  class="sidebar-item" data-section="artigos"><i class="ti ti-file-text" aria-hidden="true"></i>Artigos</a>
+        <a href="#projetos" class="sidebar-item" data-section="projetos"><i class="ti ti-code"      aria-hidden="true"></i>Projetos</a>
+        <a href="#relatorios" class="sidebar-item" data-section="relatorios"><i class="ti ti-report"  aria-hidden="true"></i>Relatórios</a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Links</div>
+        <a href="https://linkedin.com/in/joel-nicollas" target="_blank" rel="noopener" class="sidebar-item">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn
+        </a>
+        <a href="https://github.com/joel-nicollas" target="_blank" rel="noopener" class="sidebar-item">
+          <i class="ti ti-brand-github" aria-hidden="true"></i>GitHub
+        </a>
+      </div>
+    </aside>
+
+    <div class="content">
+
+      <section id="certificados">
+        <div class="section-header">
+          <span class="section-title">Certificados · Trilha Completa</span>
+          <a href="#" class="view-all">ver todos →</a>
+        </div>
+
+        <div class="cert-filters">
+          <button data-filter="all"       class="filter-btn filter-active">Todos</button>
+          <button data-filter="ia"        class="filter-btn">IA &amp; ML</button>
+          <button data-filter="cloud"     class="filter-btn">Cloud</button>
+          <button data-filter="seguranca" class="filter-btn">Segurança</button>
+        </div>
+
+        <div class="cert-grid" id="cert-grid-dinamico"></div>
+      </section>
+
+      <section id="artigos">
+        <div class="section-header">
+          <span class="section-title">Artigos recentes</span>
+          <a href="#" class="view-all">ver todos →</a>
+        </div>
+
+        <div class="articles-list" id="artigos-lista-dinamica"></div>
+      </section>
+
+      <section id="projetos">
+        <div class="section-header">
+          <span class="section-title">Projetos</span>
+          <a href="https://github.com/joel-nicollas" target="_blank" rel="noopener" class="view-all">
+            ver no GitHub →
+          </a>
+        </div>
+
+        <div class="projects-grid" id="projetos-grid-dinamico"></div>
+      </section>
+
+      <section id="privado">
+
+        <div id="private-form" class="lock-banner"
+             style="flex-direction:column; align-items:flex-start; gap:1rem;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <i class="ti ti-lock lock-icon" aria-hidden="true"></i>
+            <div class="lock-text">
+              <div class="lock-title">Área privada · Pesquisa de Segurança</div>
+              <div class="lock-desc">Insira a senha para acessar os relatórios técnicos.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; width:100%;">
+            <input
+              id="private-password"
+              type="password"
+              placeholder="Senha de acesso"
+              autocomplete="current-password"
+              style="flex:1; padding:8px 12px; background:var(--bg3);
+                     border:0.5px solid var(--border2); border-radius:var(--radius-sm);
+                     color:var(--text); font-size:13px; outline:none;"
+            />
+            <button id="private-submit" class="lock-btn">
+              <i class="ti ti-key" aria-hidden="true"></i> Entrar
+            </button>
+          </div>
+          <span id="private-error"
+                style="display:none; font-size:12px; color:#f87171;"></span>
+        </div>
+
+        <div id="private-content" style="display:none; padding:1rem;">
+          <p style="color:var(--muted);">
+            Conteúdo privado aqui — relatórios técnicos, pesquisas de segurança, etc.
+          </p>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer-bar">
+    <span class="footer-left">joel.nicollas © 2025 · Campina Grande, PB</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/joel-nicollas" target="_blank" rel="noopener" class="footer-link">
+        <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+      <a href="https://github.com/joel-nicollas" target="_blank" rel="noopener" class="footer-link">
+        <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
+      </a>
+      <a href="mailto:seuemail@exemplo.com" class="footer-link">
+        <i class="ti ti-mail" aria-hidden="true"></i> Contato
+      </a>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
